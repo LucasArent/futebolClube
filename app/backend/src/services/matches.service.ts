@@ -1,6 +1,6 @@
 import IMatches from '../Interfaces/IMatches';
 import MatchesModel from '../models/MatchesModel';
-import { ServiceResponse } from './service.response';
+import { ServiceResponse, ServiceMessage } from './service.response';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 
 class MatchesService {
@@ -25,6 +25,14 @@ class MatchesService {
       data: filtered,
     };
   };
-}
 
+  finishMatche = async (id: number): Promise<ServiceResponse<ServiceMessage>> => {
+    const allMatchesFiltered = await this.matchesModel.finishMatche(id);
+    console.log('SERVICE', allMatchesFiltered);
+    return { status: 'SUCCESSFUL',
+      data: {
+        message: 'Finished',
+      } };
+  };
+}
 export default MatchesService;

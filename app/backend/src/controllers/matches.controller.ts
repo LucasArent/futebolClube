@@ -19,6 +19,11 @@ class MatchesController {
     const allMatches = await this.matchesService.getAllMatches();
     return res.status(200).json(allMatches.data);
   };
-}
 
+  finishMatche = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const filtered = await this.matchesService.finishMatche(Number(id));
+    return res.status(200).json(filtered.data);
+  };
+}
 export default MatchesController;

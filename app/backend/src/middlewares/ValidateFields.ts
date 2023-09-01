@@ -8,18 +8,11 @@ class ValidateLogin {
 
     for (let index = 0; index < requiredKeys.length; index += 1) {
       const notFoundKey = requiredKeys[index];
-      if (!(notFoundKey in login)) {
+      if (!Object.hasOwnProperty.call(login, notFoundKey)) { // trade "in" for "hasOwnProperty"
         return res.status(mapStatusHTTP('INVALID_DATA'))
           .json({ message: 'All fields must be filled' });
       }
     }
-
-    // for (const requiredKey of requiredKeys) {
-    //   if (!(requiredKey in login)) {
-    //     return res.status(mapStatusHTTP('INVALID_DATA')).json({ message: 'All fields must be filled' });
-    //   }
-    // }
-    // Loop
 
     if (!login.password || !login.email) {
       return res.status(mapStatusHTTP('INVALID_DATA'))

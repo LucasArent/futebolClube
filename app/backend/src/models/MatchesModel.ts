@@ -28,8 +28,12 @@ class MatchesModel implements IMatchesModel {
         { model: SequelizeTeam, as: 'homeTeam', attributes: { exclude: ['id'] } },
         { model: SequelizeTeam, as: 'awayTeam', attributes: { exclude: ['id'] } },
       ],
-    })
-  ;
+    });
+
+  finishMatche = async (id: number): Promise<unknown> =>
+    this.model.update({ inProgress: false }, {
+      where: { id },
+    });
 }
 
 export default MatchesModel;
