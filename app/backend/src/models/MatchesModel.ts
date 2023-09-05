@@ -1,3 +1,4 @@
+import { DataMatche } from '../Types/matchRequest';
 import IMatches from '../Interfaces/IMatches';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import SequelizeMatches from '../database/models/SequelizeMatches';
@@ -30,10 +31,21 @@ class MatchesModel implements IMatchesModel {
       ],
     });
 
-  finishMatche = async (id: number): Promise<unknown> =>
-    this.model.update({ inProgress: false }, {
+  finishMatche = async (id: number): Promise<void> => {
+    await this.model.update({ inProgress: false }, {
       where: { id },
     });
+  };
+
+  updateMatch = async (id: number, data: IMatches): Promise<void> => {
+    // Promise<Match>
+    await this.model.update(data, { where: { id } });
+  };
+
+  changes = async (data: DataMatche): Promise<IMatches> => {
+    const dbData = await this.model.create({ inProgress: true, ...data });
+    return dbData;
+  };
 }
 
 export default MatchesModel;
