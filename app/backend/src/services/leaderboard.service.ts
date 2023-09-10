@@ -18,6 +18,7 @@ class LeaderboardService {
 
   getLeaderboard = async () => {
     const arrayTeams = (await this.matchesModel.filterMatches('false')) as Team[];
+
     const data = (await this.teamsModel.findAll()).map((team) => team.teamName);
 
     const count = new ClassificationService(arrayTeams, data);
