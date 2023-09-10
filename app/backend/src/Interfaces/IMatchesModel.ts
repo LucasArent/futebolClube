@@ -1,5 +1,5 @@
 import IMatches from './IMatches';
-import { DataMatche, Match } from '../Types/matchRequest';
+import { DataMatche, Match } from '../Request/matchRequest';
 
 interface IMatchesModel {
   findAll(): Promise<IMatches[]>,

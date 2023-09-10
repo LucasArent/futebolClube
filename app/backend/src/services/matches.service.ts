@@ -1,4 +1,4 @@
-import { DataMatche, Match } from '../Types/matchRequest';
+import { DataMatche, Match } from '../Request/matchRequest';
 import IMatches from '../Interfaces/IMatches';
 import MatchesModel from '../models/MatchesModel';
 import { ServiceResponse, ServiceMessage } from './service.response';

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import MatchesService from '../services/matches.service';
 import TeamService from '../services/team.service';
-import { DataMatche, Match } from '../Types/matchRequest';
+import { DataMatche, Match } from '../Request/matchRequest';
 
 class MatchesController {
   private matchesService: MatchesService;

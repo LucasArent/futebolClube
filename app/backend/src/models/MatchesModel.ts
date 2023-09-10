@@ -1,4 +1,4 @@
-import { DataMatche } from '../Types/matchRequest';
+import { DataMatche } from '../Request/matchRequest';
 import IMatches from '../Interfaces/IMatches';
 import IMatchesModel from '../Interfaces/IMatchesModel';
 import SequelizeMatches from '../database/models/SequelizeMatches';
